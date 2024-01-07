@@ -1,0 +1,19 @@
+/* Common Styles */
+a{
+    text-decoration: none;
+}
+.inline{
+    display: inline;
+}
+textarea{
+    resize: none;
+}
+ul{
+    list-style-type: none;
+    margin: 0px;
+}
+.wrapper{
+    margin: 0px 300px;
+    box-sizing: border-box;
+}
+/* End of common Styles */
