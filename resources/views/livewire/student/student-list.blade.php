@@ -42,7 +42,11 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td colspan="2" x-show='isOpen'><button  class="btn btn-dark" wire:click="update({{$student->id}})" x-on:click="isOpen = ! isOpen">گوهورین</button></td>
+                                <td colspan="2" x-show='isOpen'>
+                                    <button  class="btn btn-dark" wire:click="update({{$student->id}})" x-on:click="isOpen = ! isOpen">گوهورین</button>
+                                    <button x-show='isOpen' class="btn btn-dark" x-on:click="isOpen = ! isOpen"><i class="bi bi-arrow-left"></i></button>
+                                </td>
+                                
                                 <td>
                                     <button x-show='!isOpen' class="btn btn-dark" x-on:click="isOpen = ! isOpen">گوهورینا زانیاریێت قوتابی</button>
                                     <button x-show='!isOpen' class="btn btn-danger" wire:click="destroy({{$student->id}})">ژێبرن</button>

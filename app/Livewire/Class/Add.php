@@ -4,6 +4,7 @@ namespace App\Livewire\Class;
 
 use Livewire\Component;
 use App\Models\Classroom;
+use Illuminate\Support\Str;
 
 class Add extends Component
 {
@@ -27,7 +28,7 @@ class Add extends Component
 
         $classRoom = new Classroom();
 
-        $classRoom->name = $this->className;
+        $classRoom->name = Str::upper($this->className);
         $classRoom->department = $this->classDepartment;
         $classRoom->level = $this->classLevel;
         $classRoom->save();

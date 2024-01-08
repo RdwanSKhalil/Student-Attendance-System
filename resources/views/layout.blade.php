@@ -21,13 +21,13 @@
             <div class="container-fluid">
               <ul>
                 <li>
-                  <a class="btn fs-5" href="{{route('classrooms')}}">کلاس</a>
-                  <a class="btn fs-5" href="{{route('students')}}">قوتابی</a>
-                  <a class="btn fs-5" href="{{route('info')}}">زانیاری</a>
+                  <a class="btn fs-5" href="{{route('classrooms')}}">کلاس <i class="bi bi-book-fill"></i></a>
+                  <a class="btn fs-5" href="{{route('students')}}">قوتابی <i class="bi bi-people-fill"></i></a>
+                  <a class="btn fs-5" href="{{route('info')}}">زانیاری <i class="bi bi-info-circle-fill"></i></a>
                 </li>
               </ul>
               <ul>
-                <li class="text-light fs-5">سیستەمی چیکرنا</li>
+                <li class="text-light fs-5">سیستەمی چیکرنا <i class="bi bi-journal-bookmark-fill"></i></li>
               </ul>
               <ul>
                 <img src="{{asset('/images/logo-transparent.png')}}" class="img-fluid">
