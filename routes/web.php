@@ -37,3 +37,8 @@ Route::get('/students', function () {
 Route::get('/Info', function () {
     return view('info');
 })->name('info');
+
+# Student Show Page
+Route::get('/Show/{id}', function ($id) {
+    return view('student-show')->with('id', $id);
+})->name('show-student');

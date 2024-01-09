@@ -43,27 +43,14 @@
                       </thead>
                       <tbody>
                         @foreach ($students as $student)
-                        <div x-data="{isOpenTr: false}">
                             <tr>
-                                <th x-show='!isOpen' scope="row">{{$loop->iteration}}</th>
-                                <td x-show='!isOpen'>{{$student->name}}</td>
-                                <td x-show='!isOpen'>{{$student->department}}</td>
-                                <td x-show='!isOpen'>{{$student->level}}</td>
-                                <td x-show='!isOpen'>{{$student->class}}</td>
-                                <td x-show='!isOpen'><button class="btn btn-dark" x-on:click="isOpen = ! isOpen; isOpenTr = ! isOpenTr">دیتنا زانیاریان</button></td>     
+                                <th scope="row">{{$loop->iteration}}</th>
+                                <td>{{$student->name}}</td>
+                                <td>{{$student->department}}</td>
+                                <td>{{$student->level}}</td>
+                                <td>{{$student->class}}</td>
+                                <td><a href="{{ route('show-student', $student->id) }}" class="btn btn-dark">دیتنا زانیاریان</a></td>     
                             </tr>                    
-                            @foreach ($this->getStudentAbsents($student->id) as $absent)
-                                <tr>
-                                    <th x-show='isOpenTr' scope="row">{{$loop->iteration}}</th>
-                                    <td x-show='isOpenTr'>{{$absent->name}}</td>
-                                    <td x-show='isOpenTr'>{{$absent->created_at}}</td>
-                                    <td x-show='isOpenTr'>
-                                        <button class="btn btn-danger" wire:click='deleteAbsent({{$absent->absentID}})'>ژێبرن</button>
-                                        <button class="btn btn-dark" x-on:click="isOpen = ! isOpen; isOpenTr = ! isOpenTr"><i class="bi bi-arrow-left"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach 
-                        </div>                      
                         @endforeach
                     </tbody>
                 </table>
