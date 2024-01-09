@@ -34,35 +34,36 @@
                           <th x-show='!isOpen' scope="col">بەش</th>
                           <th x-show='!isOpen' scope="col">قوناغ</th>
                           <th x-show='!isOpen' scope="col">کلاس</th>
-                          <th x-show='!isOpen' scope="col">کریار</th>
 
                           <th x-show='isOpen' scope="col">#</th>
                           <th x-show='isOpen' scope="col">ناڤێ قوتابی</th>
                           <th x-show='isOpen' scope="col">روژانێن نە ئامادە بووی</th>
-                          <th x-show='isOpen' scope="col">کریار</th>
+                          <th scope="col">کریار</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach ($students as $student)
-                            <tr x-show='!isOpen'>
-                                <th  scope="row">{{$loop->iteration}}</th>
-                                <td>{{$student->name}}</td>
-                                <td>{{$student->department}}</td>
-                                <td>{{$student->level}}</td>
-                                <td>{{$student->class}}</td>
-                                <td><button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" x-on:click="isOpen = ! isOpen">دیتنا زانیاریان</button></td>                     
-                            </tr>          
+                        <div x-data="{isOpenTr: false}">
+                            <tr>
+                                <th x-show='!isOpen' scope="row">{{$loop->iteration}}</th>
+                                <td x-show='!isOpen'>{{$student->name}}</td>
+                                <td x-show='!isOpen'>{{$student->department}}</td>
+                                <td x-show='!isOpen'>{{$student->level}}</td>
+                                <td x-show='!isOpen'>{{$student->class}}</td>
+                                <td x-show='!isOpen'><button class="btn btn-dark" x-on:click="isOpen = ! isOpen; isOpenTr = ! isOpenTr">دیتنا زانیاریان</button></td>     
+                            </tr>                    
                             @foreach ($this->getStudentAbsents($student->id) as $absent)
-                                <tr x-show='isOpen'>
-                                    <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$absent->name}}</td>
-                                    <td>{{$absent->created_at}}</td>
-                                    <td>
+                                <tr>
+                                    <th x-show='isOpenTr' scope="row">{{$loop->iteration}}</th>
+                                    <td x-show='isOpenTr'>{{$absent->name}}</td>
+                                    <td x-show='isOpenTr'>{{$absent->created_at}}</td>
+                                    <td x-show='isOpenTr'>
                                         <button class="btn btn-danger" wire:click='deleteAbsent({{$absent->absentID}})'>ژێبرن</button>
-                                        <button x-show='isOpen' class="btn btn-dark" x-on:click="isOpen = ! isOpen"><i class="bi bi-arrow-left"></i></button>
+                                        <button class="btn btn-dark" x-on:click="isOpen = ! isOpen; isOpenTr = ! isOpenTr"><i class="bi bi-arrow-left"></i></button>
                                     </td>
                                 </tr>
-                            @endforeach                       
+                            @endforeach 
+                        </div>                      
                         @endforeach
                     </tbody>
                 </table>

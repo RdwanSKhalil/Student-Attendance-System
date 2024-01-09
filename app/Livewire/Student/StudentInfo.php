@@ -36,7 +36,7 @@ class StudentInfo extends Component
             'students.id as stdID',
             'student_absences.id as absentID',
             'students.name',
-            'student_absences.created_at')->orderBy('created_at', 'desc')->get();
+            'student_absences.created_at')->where('student_absences.student_id', '=', $student_id)->orderBy('created_at', 'desc')->get();
 
         return $studentAbsents;
     }
